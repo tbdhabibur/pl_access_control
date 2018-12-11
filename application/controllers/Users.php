@@ -53,14 +53,17 @@ class Users extends CI_Controller {
 
                 $row_data['name']               = $this->input->post('name');
                 $row_data['email']              = $this->input->post('email');
+                $row_data['phone']              = $this->input->post('phone');
                 $row_data['pl_user_role_id']    = $this->input->post('role');
                 $row_data['slug ']              = $this->input->post('slug');
-                $row_data['password']           = $code;
+                $row_data['password']           = $code['password'];
                 $row_data['pl_user_role_id']    = $this->input->post('role');
                 $row_data['phone']              = ($this->input->post('phone'))? $this->input->post('phone'):0;
 
+                //$this->varDump($code['password']);
+
                 // call the crate model and inset into database
-                if ($this->global_model->create('pl_user',$row_data)) {
+                if ($this->global_model->insert('pl_user',$row_data)) {
                     // set the successfull message and redirect
                     $this->session->set_flashdata('success_msg', 'New ' . $this->_module_name . ' Added Successfully!!');
                     redirect($this->_module . '/index');

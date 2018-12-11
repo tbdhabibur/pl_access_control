@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Gym</h1>
+        <h1 class="page-header">Users</h1>
     </div>
 </div>
 <div class="row">
@@ -18,7 +18,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="actions">
-                    <a class="btn btn-primary" href="<?php echo base_url('index.php/users/create'); ?>">Create New Product</a>
+                    <a class="btn btn-primary" href="<?php echo base_url('index.php/users/create'); ?>">Create New User</a>
                     <a class="btn btn-danger" href="<?php echo base_url('users/create'); ?>">Delete All</a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>##</th>
+                            <th><span class="pull-right">##</span></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                                 <td><?php echo $row->phone; ?></td>
                                 <td><?php echo $row->email; ?></td>
                                 <td><?php echo $row->role_name; ?></td>
-                                <td align="center">
+                                <td align="right">
                                     <a class="btn btn-default" href="<?php echo base_url('product/edit/'.$row->id); ?>"><span class="fa fa-eye"></span></a>
                                     <a class="btn btn-danger" onclick="return confirm('Do you really want to delete?');" href="<?php echo base_url('gym/delete/'.$row->id); ?>"><span class="fa fa-trash"></span></a>
                                 </td>

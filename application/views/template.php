@@ -311,20 +311,38 @@
                             </span>
                         </div>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
 <!--                    <li>-->
-<!--                        <a href="#"><i class="fa fa-product-hunt"></i> Products<span class="fa arrow"></span></a>-->
+<!--                        <a href="--><?php //echo base_url(); ?><!--"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Admin<span class="fa arrow"></span></a>-->
 <!--                        <ul class="nav nav-second-level">-->
-<!--                            <li><a href="--><?php //echo base_url('product'); ?><!--">Products</a></li>-->
-<!--                            <li><a href="--><?php //echo base_url('attribute'); ?><!--">Attribute</a></li>-->
-<!--                            <li><a href="--><?php //echo base_url('category'); ?><!--">Categories</a></li>-->
+<!--                            <li><a href="--><?php //echo base_url('product'); ?><!--">Menu Access Control</a></li>-->
 <!--                        </ul>-->
 <!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="--><?php //echo base_url('users'); ?><!--"><i class="fa fa-dashboard fa-fw"></i> User</a>-->
+<!--                    </li>-->
+
+                        <?php $parent = 0; $menus = $this->custom_model->getMenus($parent);
+                            if(!empty($menus) || $menus!=null){
+                                foreach ($menus as $menu){
+                                    $subMenus = $this->custom_model->getMenus($menu['id']);
+                        ?>
                     <li>
-                        <a href="<?php echo base_url('users'); ?>"><i class="fa fa-dashboard fa-fw"></i> User</a>
+                        <a href="<?php echo base_url($menu['end_point'])?>"><i class="<?php echo $menu['class']?>"></i><?php echo $menu['name']?><?php !empty($subMenus) ? "<span class='fa arrow'></span>":""?></a>
+                            <?php
+                                if(!empty($subMenus) || $subMenus !=null){
+                                    foreach ($subMenus as $subMenu){
+                            ?>
+                            <ul class="nav nav-second-level">
+                                <li><a href="<?php echo base_url($subMenu['end_point']); ?>"><?php echo $subMenu['name']?></a></li>
+                            </ul>
+                            <?php }}?>
+
                     </li>
+                    <?php }}?>
+
 
                 </ul>
             </div>

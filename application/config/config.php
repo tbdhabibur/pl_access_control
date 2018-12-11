@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://192.168.50.60/ci-prestigelab_backend';
-$config['base_url'] = 'http://localhost/pl/access_control';
+$config['base_url'] = 'http://localhost/pl/pl_access_control';
 
 /*
 |--------------------------------------------------------------------------

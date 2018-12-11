@@ -26,6 +26,10 @@
                                         <input type="text" name="email" id="email" class="form-control the_email" value="<?php echo set_value('email'); ?>">
                                     </div>
                                     <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" name="phone" id="phone" class="form-control the_phone" value="<?php echo set_value('phone'); ?>">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="password">password</label>
                                         <input type="password" name="password" id="password" class="form-control the_password" value="<?php echo set_value('password'); ?>">
                                     </div>
@@ -46,9 +50,11 @@
                                     <div class="form-group mb0">
                                         <?php
                                         $role =array();
-                                        foreach ($result as $row)
-                                        {
-                                            $role[$row->id]=$row->name;
+                                        if(!empty($result)){
+                                            foreach ($result as $row)
+                                            {
+                                                $role[$row->id]=$row->name;
+                                            }
                                         }
                                         echo form_dropdown('role', $role, set_value('role'), array('class'=>'form-control'));
                                         ?>
